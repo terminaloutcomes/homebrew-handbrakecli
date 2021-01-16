@@ -1,4 +1,4 @@
-cask "handbrakecli" do
+class HandBrakeCLI < Formula
   desc "HandBrake CLI"
   homepage "https://handbrake.fr/downloads2.php"
   version "1.3.3"
