@@ -9,4 +9,5 @@ cask "handbrakecli" do
   name "HandBrakeCLI"
   def install
     bin.install "HandBrakeCLI"
+  end
 end
