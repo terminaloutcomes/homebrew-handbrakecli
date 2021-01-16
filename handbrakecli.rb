@@ -1,4 +1,4 @@
-class HandBrakeCLI < Formula
+class Handbrakecli < Formula
   desc "HandBrake CLI"
   homepage "https://handbrake.fr/downloads2.php"
   version "1.3.3"
