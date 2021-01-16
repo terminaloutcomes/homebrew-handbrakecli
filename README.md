@@ -1,6 +1,6 @@
 # homebrew-handbrakecli
 
-[HandBrakeCLI](https://github.com/brandt/symlinks) for homebrew
+[HandBrakeCLI](https://handbrake.fr/downloads2.php) for homebrew
 
 Installation: 
 
