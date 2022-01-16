@@ -2,6 +2,7 @@ name: Check for updates in brew definitions
 on:
   schedule:
     - cron: '0 * * *'
+  push:
 jobs:
   check_updates:
     runs-on: ubuntu-latest
