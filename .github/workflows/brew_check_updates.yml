@@ -18,13 +18,16 @@ jobs:
       #     else
       #       exit 1
       #     fi
-      - uses: technote-space/create-pr-action@v2
-        with:
-          EXECUTE_COMMANDS: |
-            ./check_latest_release.sh
-            echo ""::set-env name=LATEST::${LATEST}
-          COMMIT_MESSAGE: 'Updated version automagically'
-          COMMIT_NAME: 'Version bump'
-          COMMIT_EMAIL: 'james@terminaloutcomes.com'
-          PR_BRANCH_NAME: 'brew-update'
-          PR_TITLE: 'Update to version'
+      - name: test script
+        run: |
+          ./check_latest_release.sh
+          git status
+      # - uses: technote-space/create-pr-action@v2
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     EXECUTE_COMMANDS: bash ./check_latest_release.sh
+      #     COMMIT_MESSAGE: 'Updated version automagically'
+      #     COMMIT_NAME: 'Version bump'
+      #     COMMIT_EMAIL: 'james@terminaloutcomes.com'
+      #     PR_BRANCH_NAME: 'brew-update-${PR_ID}'
+      #     PR_TITLE: 'Update to version'
