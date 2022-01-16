@@ -39,7 +39,7 @@ fi
 
 # pull the download url from the spec file and update it
 echo "Grabbing download URL"
-DOWNLOAD_URL=$(grep -E 'url \"http.*' "${SPECFILE}" | awk '{print $NF}' | tr -d '"' | sed -E "s/#{version}/${LATEST}/g")
+DOWNLOAD_URL=$(grep -E 'url \"http.*' "${SPECFILE}" | awk '{print $NF}' | tr -d '"' | sed -E "s/#\{version\}/$LATEST/g")
 if [ -z "${DOWNLOAD_URL}" ]; then
     echo "Failed to find download URL, bailing!"
     exit 1
