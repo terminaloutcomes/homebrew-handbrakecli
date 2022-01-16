@@ -1,0 +1,29 @@
+name: Check for updates in brew definitions
+"on":
+  schedule:
+    - cron: 0 0 * * *
+  push:
+    branches:
+      - main
+jobs:
+  check_updates:
+    steps:
+      - uses: actions/checkout@v2
+      # - name: Check for updates
+      #   run: |
+      #     LATEST=$(./check_latest_release)
+      #     if [ -z "${LATEST}" ]; then
+      #       echo "::set-env name=LATEST::${LATEST}"
+      #     else
+      #       exit 1
+      #     fi
+      - uses: technote-space/create-pr-action@v2
+        with:
+          EXECUTE_COMMANDS: |
+            ./check_latest_release.sh
+            echo ""::set-env name=LATEST::${LATEST}
+          COMMIT_MESSAGE: 'Update to version ${env.LATEST}'
+          COMMIT_NAME: 'Update to version ${env.LATEST}'
+          COMMIT_EMAIL: 'james@terminaloutcomes.com'
+          PR_BRANCH_NAME: 'brew-update-${PR_ID}'
+          PR_TITLE: 'Update to version ${env.LATEST}'
