@@ -15,6 +15,8 @@ SPECFILE=$(find "$(pwd)" -type f -name '*.rb' | head -n1)
 if [ -z "${SPECFILE}" ]; then
     echo "Failed to find specfile, bailing!"
     exit 1
+else
+    echo "SPECFILE: ${SPECFILE}"
 fi
 
 # grab the update url from the spec file
@@ -22,6 +24,8 @@ URL=$(grep -E homepage "${SPECFILE}" | awk '{print $NF}' | tr -d '"')
 if [ -z "${URL}" ]; then
     echo "Failed to find check URL, bailing!"
     exit 1
+else
+    echo "Check URL: ${URL}"
 fi
 
 
@@ -30,6 +34,9 @@ LATEST=$(get_latest_release "${URL}" )
 if [ -z "${LATEST}" ]; then
     echo "Failed to find latest version, bailing!"
     exit 1
+else
+    # echo "::set-env name=LATEST::${LATEST}"
+    echo "Latest version ${LATEST}"
 fi
 
 # pull the download url from the spec file and update it
@@ -38,6 +45,8 @@ DOWNLOAD_URL=$(grep -E 'url \"http.*' "${SPECFILE}" | awk '{print $NF}' | tr -d 
 if [ -z "${DOWNLOAD_URL}" ]; then
     echo "Failed to find download URL, bailing!"
     exit 1
+else
+    echo "Download URL: ${DOWNLOAD_URL}"
 fi
 
 echo "Grabbing filehash"
@@ -51,5 +60,3 @@ fi
 # updates the file
 find "$(pwd)" -maxdepth 1 -type f -name '*.rb' -exec sed -i "" -E "s/version \\\".*/version \"${LATEST}\"/g" "{}" \;
 find "$(pwd)" -maxdepth 1 -type f -name '*.rb' -exec sed -i "" -E "s/sha256 \\\".*/sha256 \"${FILEHASH}\"/g" "{}" \;
-
-echo "::set-env name=LATEST::${LATEST}"
