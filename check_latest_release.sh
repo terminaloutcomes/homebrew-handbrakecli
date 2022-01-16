@@ -33,12 +33,14 @@ if [ -z "${LATEST}" ]; then
 fi
 
 # pull the download url from the spec file and update it
+echo "Grabbing download URL"
 DOWNLOAD_URL=$(grep -E 'url \"http.*' "${SPECFILE}" | awk '{print $NF}' | tr -d '"' | sed -E "s/#{version}/${LATEST}/g")
 if [ -z "${DOWNLOAD_URL}" ]; then
     echo "Failed to find download URL, bailing!"
     exit 1
 fi
 
+echo "Grabbing filehash"
 # calculate the shasum based on the file
 FILEHASH=$(curl -L --silent "${DOWNLOAD_URL}" | shasum -a 256 | awk '{print $1}')
 if [ -z "${FILEHASH}" ]; then
