@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run the check script
-        run: bash ./check_latest_release.sh
+        run: bash homebrew_check_latest_release.sh
 
       - name: Update homebrew spec file
         uses: technote-space/create-pr-action@v2
