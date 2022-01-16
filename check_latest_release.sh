@@ -59,8 +59,8 @@ fi
 
 echo "Updating file"
 # updates the file
-find "$(pwd)" -maxdepth 1 -type f -name '*.rb' -exec sed -i "" -E "s/version \\\".*/version \"${LATEST}\"/g" "{}" \;
-find "$(pwd)" -maxdepth 1 -type f -name '*.rb' -exec sed -i "" -E "s/sha256 \\\".*/sha256 \"${FILEHASH}\"/g" "{}" \;
+sed -i "" -E "s/version \\\".*/version \"${LATEST}\"/g" "${SPECFILE}"
+sed -i "" -E "s/sha256 \\\".*/sha256 \"${FILEHASH}\"/g" "${SPECFILE}"
 
 DIFF_LINES="$(git diff | wc -l)"
 if [ "${DIFF_LINES}" -ne 0 ]; then
