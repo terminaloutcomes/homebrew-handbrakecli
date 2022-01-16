@@ -59,8 +59,8 @@ fi
 
 echo "Updating file"
 # updates the file
-sed -i "" -E "s/version \\\".*/version \"${LATEST}\"/g" "${SPECFILE}"
-sed -i "" -E "s/sha256 \\\".*/sha256 \"${FILEHASH}\"/g" "${SPECFILE}"
+sed -i -E "s/version \\\".*/version \"${LATEST}\"/g" "${SPECFILE}"
+sed -i -E "s/sha256 \\\".*/sha256 \"${FILEHASH}\"/g" "${SPECFILE}"
 
 DIFF_LINES="$(git diff | wc -l)"
 if [ "${DIFF_LINES}" -ne 0 ]; then
