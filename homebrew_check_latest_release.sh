@@ -36,7 +36,7 @@ else
     # echo "::set-env name=LATEST::${LATEST}"
     echo "Latest version ${LATEST}"
 fi
-CURRENT=$(grep -E 'version \"\d+' "${SPECFILE}" | awk '{print $NF}' | tr -d '"')
+CURRENT=$(grep -E 'version \"+' "${SPECFILE}" | awk '{print $NF}' | tr -d '"')
 
 if [ "${CURRENT}" == "${LATEST}" ]; then
     echo "No change in version, quitting."
