@@ -76,3 +76,8 @@ if [ "${DIFF_LINES}" -ne 0 ]; then
 else
     echo "No changes required."
 fi
+
+echo "New script below"
+echo "#####################################################"
+cat "${SPECFILE}"
+echo "#####################################################"
