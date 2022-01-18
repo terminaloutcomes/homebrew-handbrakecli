@@ -1,7 +1,7 @@
 class Handbrakecli < Formula
   desc "HandBrake CLI"
   homepage "https://api.github.com/repos/HandBrake/HandBrake/releases/latest"
-  version "1.5.0"
+  version "1.5.1"
   license "GPLv2"
 
   # https://handbrake.fr/rotation.php?file=HandBrakeCLI-1.5.1.dmg
